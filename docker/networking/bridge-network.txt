@@ -1,0 +1,41 @@
+Creating a bridge network in docker and validating how we can communicate between the two containers:
+-----------------------------------------------------------------------------------------------------
+1] Create a user-defined docker bridge:
+
+docker network create my_network_bridge
+
+This command creates a bridge network with the name my_network_bridge
+
+2] Start the first container (listener):
+
+docker run -it --rm --name listener -network my_network_bridge alpine sh
+
+this will pull the alpine image, runs a container with the name listener and also will enter into the shell of the container
+
+3] Install package and listen to the port
+
+Install netcat:
+apk add --no-cache netcat-openbsd
+
+Start listening on port 12345:
+nc -l -p 12345
+
+Container will now listen to any messages on port 12345
+
+4] Start the second container (sender):
+
+docker run -it --rm --name sender -network my_network_bridge alpine sh
+
+This is similar to the first container with the name sender
+
+5] Install package and listen to the port
+
+Install netcat:
+apk add --no-cache netcat-openbsd
+
+Send message to the listener:
+echo "Hello from the listener!" | nc listener 12345
+
+Additionally we can also run ping command from one of the container to the other container
+Ex: ping listener -- run this from sender container
+
