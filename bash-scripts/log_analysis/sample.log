@@ -1,0 +1,7 @@
+2026-01-27 12:00:01 ERROR Database connection failed
+2026-01-27 12:00:05 ERROR Database connection failed
+2026-01-27 12:00:10 ERROR Timeout while calling API
+2026-01-27 12:01:22 ERROR Disk space low
+2026-01-27 12:02:33 ERROR Database connection failed
+2026-01-27 12:03:44 WARN  High memory usage detected
+2026-01-27 12:04:55 INFO  Health check endpoint called
